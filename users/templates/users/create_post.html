@@ -1,0 +1,10 @@
+{% include "../layout/header.html" %}
+
+<h2>Создать пост</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Создать</button>
+</form>
+
+{% include "../layout/footer.html" %}

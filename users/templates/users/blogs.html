@@ -1,0 +1,18 @@
+{% include "../layout/header.html" %}
+
+<div><a href="{% url 'create_post' %}" style="color: white;">Создать статейку</a></div>
+
+<h2>Список статей</h2>
+<ul>
+{% for post in posts %}
+    <li>
+    <h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
+    <p>Автор: {{ post.author }}</p>
+    <p>Дата создания: {{ post.created_time }}</p>
+    </li>
+{% empty %}
+    <li>Нет статей.</li>
+{% endfor %}
+</ul>
+
+{% include "../layout/footer.html" %}

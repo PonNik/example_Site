@@ -1,0 +1,10 @@
+{% include "../layout/header.html" %}
+
+<h2>Редактировать пост</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Сохранить изменения</button>
+</form>
+
+{% include "../layout/footer.html" %}

@@ -1,0 +1,20 @@
+{% include "../layout/header.html" %}
+
+{% block content %}
+<h2>Регистрация</h2>
+
+<form method="post" style="background-color: #333; padding: 20px; border-radius: 10px; width: 300px; margin: auto;">
+    {% csrf_token %}
+    {{ form.username.label_tag }}<br>
+    {{ form.username }}<br>
+    {{ form.password1.label_tag }}<br>
+    {{ form.password1 }}<br>
+    {{ form.password2.label_tag }}<br>
+    {{ form.password2 }}<br>
+    <input type="submit" style="margin-top: 10px;" value="Зарегестрироваться">
+</form>
+
+<a href="{% url 'home' %}" style="color: rgb(8, 253, 0);">На главную</a>
+{% endblock %}    
+
+{% include "../layout/footer.html" %}

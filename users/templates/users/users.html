@@ -1,0 +1,17 @@
+{% include "../layout/header.html" %}
+{% load static %}
+
+    {% for user in users %}
+        <div class="card" style="background-color: #333; margin-top: 10px;">
+            <div style="display: flex;">
+                {% if user.photo %}
+                    <img src="{{ user.photo.url }}" width="50" height="50" style="border-radius: 50px; margin-left: 20px; margin-top: 10px;" alt="{{ user.user.username }}">
+                {% else %}
+                    <img src="{% static 'img/none_photo.jpg' %}" width="50" height="50" style="border-radius: 50px; margin-left: 20px; margin-top: 10px;" alt="Default Image">
+                {% endif %}
+                <h2 style="margin-left: 20px;">{{ user.user.username }}</h2>
+            </div>
+            <p>{{ user.bio }}</p>
+        </div>
+    {% endfor %}
+{% include "../layout/footer.html" %}

@@ -1,0 +1,26 @@
+{% include "../layout/header.html" %}
+
+{% block content %}
+<h2>Авторизация</h2>
+
+  <form method="post" style="background-color: #333; padding: 20px; border-radius: 10px; width: 300px; margin: auto;">
+    {% csrf_token %}
+    <table>
+      {{ form.username.label_tag }} <br>
+      {{ form.username }} <br>
+      {{ form.password.label_tag }} <br>
+      {{ form.password }} <br>
+      <tr>
+        <td>&nbsp;</td>
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <input type="submit" style="margin-top: 10px;" value="Войти">
+        </div>
+      </tr>                
+    </table>
+    <div>Если вы не зарегестрированны, не беда! 
+      <a href="{% url 'signup' %}" style="color: rgb(8, 253, 0);">Зарегистрироваться</a>
+    </div>
+  </form>
+{% endblock %}
+
+{% include "../layout/footer.html" %}
