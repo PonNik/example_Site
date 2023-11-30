@@ -3,16 +3,15 @@
 <div><a href="{% url 'create_post' %}" style="color: white;">Создать статейку</a></div>
 
 <h2>Список статей</h2>
-<ul>
+
 {% for post in posts %}
-    <li>
-    <h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
-    <p>Автор: {{ post.author }}</p>
-    <p>Дата создания: {{ post.created_time }}</p>
-    </li>
+    <div style="display: flex; justify-content: center;">
+        <div class="card_post" style="background-color: #333; width: 80%; margin-top: 10px; border-radius: 10px;">
+        <h3><a href="{% url 'post_detail' post.id %}" style="color: white; text-decoration: none;">{{ post.title }}</a></h3>
+        </div>
+    </div>
 {% empty %}
-    <li>Нет статей.</li>
+    <div>Нет статей.</div>
 {% endfor %}
-</ul>
 
 {% include "../layout/footer.html" %}

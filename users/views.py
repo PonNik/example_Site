@@ -53,7 +53,7 @@ def create_post(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('post', post_id=post.id)
+            return redirect('post_detail', post_id=post.id)
     else:
         form = PostForm()
     return render(request, 'users/create_post.html', {'form': form})
@@ -74,8 +74,18 @@ def edit_post(request, post_id):
     return render(request, 'users/edit_post.html', {'form': form})
 
 
+@login_required
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.user == post.author:
+        post.delete()
+        return redirect('home')
+    else: 
+        return redirect("post_detail", post_id=post.id)
+
+
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    return render(request, 'post_detail.html', {'post': post})
+    return render(request, 'users/post_detail.html', {'post': post})
 
 #################################

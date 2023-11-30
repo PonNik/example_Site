@@ -9,13 +9,11 @@ class UserProfile(models.Model):
 
 
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     created_time = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=50, null=False, default='No title')
     text = models.TextField()
 
     def edit(self, new_text):
         self.text = new_text
         self.save()
-
-    def delete(self):
-        self.delete()
